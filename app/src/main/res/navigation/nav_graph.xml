@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeScreen">
+
+
+    <fragment
+        android:id="@+id/welcomeScreen"
+        android:name="com.example.teacherproject.view.WelcomeScreen"
+        android:label="welcome_screen_fragment"
+        tools:layout="@layout/welcome_screen_fragment" >
+        <action
+            android:id="@+id/action_welcomeScreen_to_report"
+            app:destination="@id/report" />
+        <action
+            android:id="@+id/action_welcomeScreen_to_subjectList"
+            app:destination="@id/subjectList" />
+        <action
+            android:id="@+id/action_welcomeScreen_to_studentAll"
+            app:destination="@id/studentAll" />
+    </fragment>
+    <fragment
+        android:id="@+id/subjectList"
+        android:name="com.example.teacherproject.view.subject.SubjectList"
+        android:label="subject_list_fragment"
+        tools:layout="@layout/subject_list_fragment" >
+        <action
+            android:id="@+id/action_subjectList_to_subject"
+            app:destination="@id/subject" />
+        <action
+            android:id="@+id/action_subjectList_to_welcomeScreen"
+            app:destination="@id/welcomeScreen" />
+        <action
+            android:id="@+id/action_subjectList_to_editSubject"
+            app:destination="@id/editSubject" />
+        <action
+            android:id="@+id/action_subjectList_to_addSubject"
+            app:destination="@id/addSubject" />
+    </fragment>
+    <fragment
+        android:id="@+id/subject"
+        android:name="com.example.teacherproject.view.subject.Subject"
+        android:label="subject_fragment"
+        tools:layout="@layout/subject_fragment" >
+        <action
+            android:id="@+id/action_subject_to_subjectList"
+            app:destination="@id/subjectList" />
+        <argument
+            android:name="subjectID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_subject_to_personList"
+            app:destination="@id/personList" />
+        <action
+            android:id="@+id/action_subject_to_addPersonList"
+            app:destination="@id/addPersonList" />
+    </fragment>
+    <fragment
+        android:id="@+id/personList"
+        android:name="com.example.teacherproject.view.person.PersonList"
+        android:label="person_list_fragment"
+        tools:layout="@layout/person_list_fragment" >
+        <action
+            android:id="@+id/action_personList_to_person"
+            app:destination="@id/person" />
+        <action
+            android:id="@+id/action_personList_to_addGrade"
+            app:destination="@id/addGrade" />
+        <action
+            android:id="@+id/action_personList_to_addGrade2"
+            app:destination="@id/addGrade" />
+        <action
+            android:id="@+id/action_personList_to_subject"
+            app:destination="@id/subject" />
+        <argument
+            android:name="subjectID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/person"
+        android:name="com.example.teacherproject.view.person.Person"
+        android:label="person_fragment"
+        tools:layout="@layout/person_fragment" >
+        <action
+            android:id="@+id/action_person_to_personList"
+            app:destination="@id/personList" />
+        <action
+            android:id="@+id/action_person_to_gradeList"
+            app:destination="@id/gradeList" />
+        <action
+            android:id="@+id/action_person_to_addGrade"
+            app:destination="@id/addGrade" />
+        <argument
+            android:name="personID"
+            app:argType="integer" />
+        <argument
+            android:name="subjectID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/gradeList"
+        android:name="com.example.teacherproject.view.grade.GradeList"
+        android:label="grade_list_fragment"
+        tools:layout="@layout/grade_list_fragment" >
+        <action
+            android:id="@+id/action_gradeList_to_person"
+            app:destination="@id/person" />
+        <action
+            android:id="@+id/action_gradeList_to_grade"
+            app:destination="@id/grade" />
+        <action
+            android:id="@+id/action_gradeList_to_addGrade"
+            app:destination="@id/addGrade" />
+        <argument
+            android:name="studentID"
+            app:argType="integer" />
+        <argument android:name="subjectID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/grade"
+        android:name="com.example.teacherproject.view.grade.Grade"
+        android:label="grade_fragment"
+        tools:layout="@layout/grade_fragment" >
+        <action
+            android:id="@+id/action_grade_to_gradeList"
+            app:destination="@id/gradeList" />
+        <action
+            android:id="@+id/action_grade_to_editGrade"
+            app:destination="@id/editGrade" />
+        <argument
+            android:name="gradeID"
+            app:argType="integer" />
+        <argument
+            android:name="studentID"
+            app:argType="integer" />
+        <argument
+            android:name="subjectID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/report"
+        android:name="com.example.teacherproject.view.Report"
+        android:label="raport_fragment"
+        tools:layout="@layout/raport_fragment" >
+        <action
+            android:id="@+id/action_report_to_welcomeScreen"
+            app:destination="@id/welcomeScreen" />
+        <action
+            android:id="@+id/action_report_to_editGrade"
+            app:destination="@id/editGrade" />
+        <action
+            android:id="@+id/action_report_to_grade"
+            app:destination="@id/grade" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGrade"
+        android:name="com.example.teacherproject.view.grade.AddGrade"
+        android:label="add_grade_fragment"
+        tools:layout="@layout/add_grade_fragment" >
+        <action
+            android:id="@+id/action_addGrade_to_personList"
+            app:destination="@id/personList" />
+        <argument
+            android:name="student_id"
+            app:argType="integer" />
+        <argument android:name="subject_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/editGrade"
+        android:name="com.example.teacherproject.view.grade.EditGrade"
+        android:label="edit_grade_fragment"
+        tools:layout="@layout/edit_grade_fragment" >
+        <action
+            android:id="@+id/action_editGrade_to_grade"
+            app:destination="@id/grade" />
+        <argument
+            android:name="gradeID"
+            app:argType="integer" />
+        <argument
+            android:name="subjectID"
+            app:argType="integer" />
+        <argument android:name="studentID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_editGrade_to_report"
+            app:destination="@id/report" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSubject"
+        android:name="com.example.teacherproject.view.subject.EditSubject"
+        android:label="edit_subject_fragment"
+        tools:layout="@layout/edit_subject_fragment" >
+        <argument
+            android:name="subjectID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_editSubject_to_subjectList"
+            app:destination="@id/subjectList" />
+        <action
+            android:id="@+id/action_editSubject_to_editSubjectName"
+            app:destination="@id/editSubjectName" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPersonList"
+        android:name="com.example.teacherproject.view.person.AddPersonList"
+        android:label="add_student_list_fragment"
+        tools:layout="@layout/add_student_list_fragment" >
+        <argument
+            android:name="SubjectID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addPersonList_to_editSubject"
+            app:destination="@id/editSubject" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSubject"
+        android:name="com.example.teacherproject.view.subject.AddSubject"
+        android:label="AddSubject" >
+        <action
+            android:id="@+id/action_addSubject_to_subjectList"
+            app:destination="@id/subjectList" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSubjectName"
+        android:name="com.example.teacherproject.view.subject.EditSubjectName"
+        android:label="EditSubjectName" >
+        <action
+            android:id="@+id/action_editSubjectName_to_editSubject"
+            app:destination="@id/editSubject" />
+        <argument android:name="subjectID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentAll"
+        android:name="com.example.teacherproject.view.person.StudentAll"
+        android:label="all_students_list_fragment"
+        tools:layout="@layout/all_students_list_fragment" >
+        <action
+            android:id="@+id/action_studentAll_to_welcomeScreen"
+            app:destination="@id/welcomeScreen" />
+        <action
+            android:id="@+id/action_studentAll_to_addPerson"
+            app:destination="@id/addPerson" />
+        <action
+            android:id="@+id/action_studentAll_to_person"
+            app:destination="@id/person" />
+        <action
+            android:id="@+id/action_studentAll_to_editPerson"
+            app:destination="@id/editPerson" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPerson"
+        android:name="com.example.teacherproject.view.person.AddPerson"
+        android:label="add_person_fragment"
+        tools:layout="@layout/add_person_fragment" >
+        <action
+            android:id="@+id/action_addPerson_to_studentAll"
+            app:destination="@id/studentAll" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPerson"
+        android:name="com.example.teacherproject.view.person.EditPerson"
+        android:label="EditPerson" >
+        <action
+            android:id="@+id/action_editPerson_to_studentAll"
+            app:destination="@id/studentAll" />
+        <argument
+            android:name="personID"
+            app:argType="integer" />
+    </fragment>
+</navigation>
